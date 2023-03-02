@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.auth {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.home {
+  margin-top: 15vh;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+textarea {
+  width: 50vw;
+  height: auto;
+}
+
+p {
+  text-align: center;
+}
+
+.buttonBorder {
+  border: none;
+  background-color: transparent;
+}
