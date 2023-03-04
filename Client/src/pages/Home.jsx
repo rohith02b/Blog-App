@@ -38,7 +38,7 @@ const Home = () => {
                 <Link to={`/post/${each.id}`}>
                   <button className='btn btn-primary m-3'>Read</button>
                 </Link>
-                <div className='card-text m-5'>
+                <div className='card-text m-md-5'>
                   <small className='text-muted'>
                     Posted by {each.username}
                   </small>

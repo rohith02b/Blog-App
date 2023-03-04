@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -9,6 +9,7 @@ const Edit = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [post, setPost] = useState({
     title: '',
     desc: '',
@@ -29,6 +30,19 @@ const Edit = () => {
     }
   };
 
+  const getData = async () => {
+    try {
+      const data = await axios.get(`http://localhost:4000/api/posts/${id}`);
+      setPost(data.data[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       {currentUser ? (
@@ -40,6 +54,7 @@ const Edit = () => {
                 type='text'
                 className='m-4 p-2 rounded-4'
                 placeholder='Title'
+                value={post.title}
                 name='title'
                 onChange={handleChange}
               />
@@ -49,6 +64,7 @@ const Edit = () => {
                 type='text'
                 className='m-4 p-2 rounded-4'
                 placeholder='Description'
+                value={post.desc}
                 name='desc'
                 onChange={handleChange}
               />
@@ -58,6 +74,7 @@ const Edit = () => {
                 type='text'
                 className='m-4 p-2 rounded-4'
                 placeholder='Category'
+                value={post.cat}
                 name='cat'
                 onChange={handleChange}
               />

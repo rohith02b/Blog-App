@@ -6,8 +6,10 @@ import Home from './pages/Home';
 import Add from './pages/Add';
 import Post from './pages/Post';
 import Edit from './pages/Edit';
+import axios from 'axios';
 
 const App = () => {
+  axios.defaults.withCredentials = true;
   return (
     <>
       <Routes>
