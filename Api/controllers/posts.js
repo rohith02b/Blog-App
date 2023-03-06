@@ -2,9 +2,10 @@ import { db } from '../db.js';
 import jwt from 'jsonwebtoken';
 
 export const getPosts = (req, res) => {
-  const q =
-    'SELECT p.id,p.title,p.img,u.username from posts p , users u where p.uid = u.id order by ID desc;';
-  db.query(q, (err, data) => {
+  const q = req.query.cat
+    ? 'SELECT p.id,p.title,p.img,u.username from posts p , users u where p.uid = u.id and cat=? order by ID desc;'
+    : 'SELECT p.id,p.title,p.img,u.username from posts p , users u where p.uid = u.id order by ID desc;';
+  db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(400).send(err);
     return res.send(data);
   });

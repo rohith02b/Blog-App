@@ -22,3 +22,8 @@ app.use('/api/posts', postsRoutes);
 app.listen(4000, () => {
   console.log('working');
 });
+
+// list of can do's
+// user view
+// comments
+// display by category
