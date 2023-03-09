@@ -23,30 +23,22 @@ const Home = () => {
 
   const post = posts.map((each, index) => {
     return (
-      <div key={each.id} className='m-5'>
-        <div className='card mb-3'>
-          <div className='row g-0'>
-            <div className='col-md-4'>
-              <img
-                src={`https://picsum.photos/400/300?random=${index}`}
-                className='img-fluid rounded-start'
-                alt='...'
-              />
-            </div>
-            <div className='col-md-8 my-auto text-center'>
-              <div className='card-body'>
-                <h5 className='card-title'>{each.title}</h5>
-                <Link to={`/post/${each.id}`}>
-                  <button className='btn btn-primary m-3'>Read</button>
-                </Link>
-                <div className='card-text m-md-5'>
-                  <small className='text-muted'>
-                    Posted by {each.username}
-                  </small>
-                </div>
-              </div>
+      <div key={each.id} className='m-3 col'>
+        <div className='card'>
+          <img
+            src={`https://picsum.photos/400/200?random=${index}`}
+            className='card-img-top'
+            alt='...'
+          />
+          <div className='card-body'>
+            <h5 className='card-title text-center m-4'>{each.title}</h5>
+            <div className='text-center m-4'>
+              <Link to={`/post/${each.id}`}>
+                <button className='btn btn-primary'>Read</button>
+              </Link>
             </div>
           </div>
+          <div className='mb-5 text-center'>Posted by {each.username}</div>
         </div>
       </div>
     );
@@ -104,7 +96,7 @@ const Home = () => {
             </ul>
           </div>
         </div>
-        <div className='m-5'>{post}</div>
+        <div className='m-3 structure'>{post}</div>
       </div>
     </>
   );

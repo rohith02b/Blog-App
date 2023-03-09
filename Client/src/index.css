@@ -31,7 +31,7 @@ textarea {
 }
 
 p {
-  text-align: center;
+  text-align: left;
 }
 
 .buttonBorder {
@@ -42,4 +42,32 @@ p {
 ul button {
   border: none;
   background-color: transparent;
+}
+
+.structure {
+  display: grid;
+  gap: 5vh 5vh;
+  grid-template-columns: auto auto auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .structure {
+    display: grid;
+    gap: 5vh 5vh;
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .structure {
+    display: grid;
+    gap: 3vh;
+    grid-template-columns: auto;
+  }
 }

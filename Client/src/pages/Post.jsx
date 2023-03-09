@@ -46,7 +46,7 @@ const Post = () => {
   return (
     <>
       <div className='text-center'>
-        <div className='mt-5 mb-4 display-6 d-flex justify-content-evenly'>
+        <div className='m-5 display-6 d-flex justify-content-evenly'>
           <div>{post.title}</div>
           {username === post.username ? (
             <div>
@@ -86,14 +86,15 @@ const Post = () => {
             <></>
           )}
         </div>
-        <img
-          src='https://picsum.photos/400'
-          className='picture m-4'
-          alt='error'
-        />
-        <div className='h4 m-4'>Blog Description</div>
-        <p className='p-4'>{post.desc}</p>
-        <div className='m-4'>Written by {post.username}</div>
+        <div className='row mx-5 mb-5 home'>
+          <div className='col-md-6 center'>
+            <img src='https://picsum.photos/300' alt='error' />
+          </div>
+          <div className='col-md-6 center my-5 my-md-0'>
+            <p className='p-4'>{post.desc}</p>
+          </div>
+        </div>
+        <div className='m-5'>Written by {post.username}</div>
       </div>
     </>
   );
