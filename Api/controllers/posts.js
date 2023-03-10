@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 
 export const getPosts = (req, res) => {
   const q = req.query.cat
-    ? 'SELECT p.id,p.title,p.img,u.username from posts p , users u where p.uid = u.id and cat=? order by ID desc;'
-    : 'SELECT p.id,p.title,p.img,u.username from posts p , users u where p.uid = u.id order by ID desc;';
+    ? 'SELECT p.id,p.title,p.img,p.uid,u.username from posts p , users u where p.uid = u.id and p.cat=? order by ID desc;'
+    : 'SELECT p.id,p.title,p.img,p.uid,u.username from posts p , users u where p.uid = u.id order by ID desc;';
   db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(400).send(err);
     return res.send(data);
@@ -14,7 +14,7 @@ export const getPosts = (req, res) => {
 export const getPost = (req, res) => {
   const values = [req.params.id];
   const q =
-    'select p.title,p.desc,p.img,p.cat,u.username from posts p , users u where u.id=p.uid and p.id = (?); ';
+    'select p.title,p.desc,p.img,p.cat,p.uid,u.username from posts p , users u where u.id=p.uid and p.id = (?); ';
 
   db.query(q, [values], (err, data) => {
     if (err) return res.status(400).send(err);

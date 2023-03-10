@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Add from './pages/Add';
 import Post from './pages/Post';
 import Edit from './pages/Edit';
+import User from './pages/User';
 import axios from 'axios';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/add' element={<Add />} />
         <Route path='/post/:id' element={<Post />} />
         <Route path='/post/edit/:id' element={<Edit />} />
+        <Route path='/user/:id' element={<User />} />
       </Routes>
     </>
   );

@@ -94,7 +94,12 @@ const Post = () => {
             <p className='p-4'>{post.desc}</p>
           </div>
         </div>
-        <div className='m-5'>Written by {post.username}</div>
+        <div className='m-5'>
+          Written by
+          <Link to={`/user/${post.uid}`} className='px-2'>
+            {post.username}
+          </Link>
+        </div>
       </div>
     </>
   );

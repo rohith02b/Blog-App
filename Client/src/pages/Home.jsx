@@ -33,12 +33,17 @@ const Home = () => {
           <div className='card-body'>
             <h5 className='card-title text-center m-4'>{each.title}</h5>
             <div className='text-center m-4'>
+              <div className='mb-5 text-center'>
+                Posted by
+                <Link to={`/user/${each.uid}`} className='px-2'>
+                  {each.username}
+                </Link>
+              </div>
               <Link to={`/post/${each.id}`}>
                 <button className='btn btn-primary'>Read</button>
               </Link>
             </div>
           </div>
-          <div className='mb-5 text-center'>Posted by {each.username}</div>
         </div>
       </div>
     );
@@ -59,7 +64,7 @@ const Home = () => {
             >
               Sort Category
             </button>
-            <ul className='dropdown-menu text-center'>
+            <ul className='dropdown-menu text-center bg-dark'>
               <li>
                 <button
                   className='p-1'
@@ -68,7 +73,9 @@ const Home = () => {
                     getPosts();
                   }}
                 >
-                  <Link to={'/?cat=Art'}>Art</Link>
+                  <Link to={'/?cat=Art'} className='link'>
+                    Art
+                  </Link>
                 </button>
               </li>
               <li>
@@ -79,7 +86,9 @@ const Home = () => {
                     getPosts();
                   }}
                 >
-                  <Link to={'/?cat=Food'}>Food</Link>
+                  <Link to={'/?cat=Food'} className='link'>
+                    Food
+                  </Link>
                 </button>
               </li>
               <li>
@@ -90,7 +99,9 @@ const Home = () => {
                     getPosts();
                   }}
                 >
-                  <Link to={'/?cat=Technology'}>Technology</Link>
+                  <Link to={'/?cat=Technology'} className='link'>
+                    Technology
+                  </Link>
                 </button>
               </li>
             </ul>
