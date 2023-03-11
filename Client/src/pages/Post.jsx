@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
+import config from '../config.json';
 
 const Post = () => {
   const [post, setPost] = useState([]);
@@ -22,7 +23,7 @@ const Post = () => {
 
   const getPost = async () => {
     try {
-      let data = await axios.get(`http://localhost:4000/api/posts/${id}`);
+      let data = await axios.get(`${config.SERVER_URL}/api/posts/${id}`);
       console.log(data.data[0]);
       setPost(data.data[0]);
     } catch (err) {
@@ -36,7 +37,7 @@ const Post = () => {
 
   const handleClick = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/posts/${id}`);
+      await axios.delete(`${config.SERVER_URL}/api/posts/${id}`);
       navigate('/');
     } catch (err) {
       console.log(err);

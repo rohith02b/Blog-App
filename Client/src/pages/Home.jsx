@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import config from '../config.json';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -9,7 +10,7 @@ const Home = () => {
 
   const getPosts = async () => {
     try {
-      const url = `http://localhost:4000/api/posts/${cat}`;
+      const url = `${config.SERVER_URL}/api/posts/${cat}`;
       let data = await axios.get(url);
       setPosts(data.data);
     } catch (err) {
@@ -70,7 +71,18 @@ const Home = () => {
                   className='p-1'
                   onClick={(e) => {
                     e.preventDefault();
-                    getPosts();
+                  }}
+                >
+                  <Link to={'/'} className='link'>
+                    None
+                  </Link>
+                </button>
+              </li>
+              <li>
+                <button
+                  className='p-1'
+                  onClick={(e) => {
+                    e.preventDefault();
                   }}
                 >
                   <Link to={'/?cat=Art'} className='link'>
@@ -83,7 +95,6 @@ const Home = () => {
                   className='p-1'
                   onClick={(e) => {
                     e.preventDefault();
-                    getPosts();
                   }}
                 >
                   <Link to={'/?cat=Food'} className='link'>
@@ -96,7 +107,6 @@ const Home = () => {
                   className='p-1'
                   onClick={(e) => {
                     e.preventDefault();
-                    getPosts();
                   }}
                 >
                   <Link to={'/?cat=Technology'} className='link'>

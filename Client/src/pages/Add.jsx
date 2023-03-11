@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../config.json';
 
 const Add = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Add = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4000/api/posts/create', post);
+      await axios.post(`${config.SERVER_URL}/api/posts/create`, post);
       navigate('/');
     } catch (err) {
       user = '';

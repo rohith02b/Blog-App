@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
+import config from '../config.json';
 
 const Edit = () => {
   const { currentUser } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const Edit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:4000/api/posts/${id}`, post);
+      await axios.put(`${config.SERVER_URL}/api/posts/${id}`, post);
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -32,7 +33,7 @@ const Edit = () => {
 
   const getData = async () => {
     try {
-      const data = await axios.get(`http://localhost:4000/api/posts/${id}`);
+      const data = await axios.get(`${config.SERVER_URL}/api/posts/${id}`);
       setPost(data.data[0]);
     } catch (err) {
       console.log(err);

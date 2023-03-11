@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 import { useParams, Link } from 'react-router-dom';
+import config from '../config.json';
 
 const User = () => {
   const [user, setUser] = useState([]);
@@ -13,9 +14,9 @@ const User = () => {
 
   const getData = async () => {
     try {
-      let userData = await axios.get(`http://localhost:4000/api/user/${id}`);
+      let userData = await axios.get(`${config.SERVER_URL}/api/user/${id}`);
       let postsData = await axios.get(
-        `http://localhost:4000/api/user/posts/${id}`
+        `${config.SERVER_URL}/api/user/posts/${id}`
       );
       setUser(userData.data[0]);
       setPosts(postsData.data);

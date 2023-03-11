@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
+import config from '../config.json';
 
 export const AuthContext = createContext();
 
@@ -9,15 +10,12 @@ export const AuthContexProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post(
-      'http://localhost:4000/api/auth/login',
-      inputs
-    );
+    const res = await axios.post(`${config.SERVER_URL}/api/auth/login`, inputs);
     setCurrentUser(res.data);
   };
 
   const logout = async (inputs) => {
-    await axios.post('http://localhost:4000/api/auth/logout');
+    await axios.post(`${config.SERVER_URL}/api/auth/logout`);
     setCurrentUser(null);
   };
 

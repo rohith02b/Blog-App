@@ -4,6 +4,8 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import postsRoutes from './routes/posts.js';
 import cookieParser from 'cookie-parser';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
@@ -13,7 +15,7 @@ app.use(
   cors({
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: [process.env.ORIGIN],
   })
 );
 
@@ -26,6 +28,7 @@ app.listen(4000, () => {
 });
 
 // list of can do's
-// user view
+// user view done
 // comments
 // display by category done
+// config file front-end api calls
