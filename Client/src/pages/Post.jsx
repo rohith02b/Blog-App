@@ -86,9 +86,13 @@ const Post = () => {
             <></>
           )}
         </div>
-        <div className='row mx-5 mb-5 home'>
+        <div className='row mx-5 home'>
           <div className='col-md-6 center'>
-            <img src='https://picsum.photos/300' alt='error' />
+            <img
+              src='https://picsum.photos/300'
+              alt='error'
+              className='image'
+            />
           </div>
           <div className='col-md-6 center my-5 my-md-0'>
             <p className='p-4'>{post.desc}</p>

@@ -7,6 +7,7 @@ import Add from './pages/Add';
 import Post from './pages/Post';
 import Edit from './pages/Edit';
 import User from './pages/User';
+import UserEdit from './pages/UserEdit';
 import axios from 'axios';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/post/:id' element={<Post />} />
         <Route path='/post/edit/:id' element={<Edit />} />
         <Route path='/user/:id' element={<User />} />
+        <Route path='/user/edit/:id' element={<UserEdit />} />
       </Routes>
     </>
   );

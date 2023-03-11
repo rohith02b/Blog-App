@@ -64,7 +64,7 @@ const Home = () => {
             >
               Sort Category
             </button>
-            <ul className='dropdown-menu text-center bg-dark'>
+            <ul className='dropdown-menu text-center bg-light'>
               <li>
                 <button
                   className='p-1'

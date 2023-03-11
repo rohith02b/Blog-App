@@ -5,6 +5,10 @@
   background-color: aliceblue;
 }
 
+.image {
+  border: 10px solid goldenrod;
+}
+
 .auth {
   height: 100vh;
   display: flex;
