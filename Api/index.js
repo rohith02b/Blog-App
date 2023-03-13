@@ -23,12 +23,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postsRoutes);
 app.use('/api/user', userRoutes);
 
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
   console.log('working');
 });
 
-// list of can do's
-// user view done
-// comments
-// display by category done
-// config file front-end api calls
+/* list of can do's
+user view - done
+comments
+display by category - done
+config file front-end api calls - done */

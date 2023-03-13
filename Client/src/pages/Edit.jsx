@@ -34,6 +34,7 @@ const Edit = () => {
   const getData = async () => {
     try {
       const data = await axios.get(`${config.SERVER_URL}/api/posts/${id}`);
+      console.log(data.data[0]);
       setPost(data.data[0]);
     } catch (err) {
       console.log(err);
@@ -44,56 +45,66 @@ const Edit = () => {
     getData();
   }, []);
 
-  return (
-    <>
-      {currentUser ? (
-        <div className='auth text-center'>
-          <div className='display-6 m-4'>Update Post</div>
-          <form>
-            <div>
-              <input
-                type='text'
-                className='m-4 p-2 rounded-4'
-                placeholder='Title'
-                value={post.title}
-                name='title'
-                onChange={handleChange}
-              />
+  if (currentUser) {
+    return (
+      <>
+        {currentUser.username === post.username ? (
+          <>
+            <div className='auth text-center'>
+              <div className='display-6 m-4'>Update Post</div>
+              <form>
+                <div>
+                  <input
+                    type='text'
+                    className='m-4 p-2 rounded-4'
+                    placeholder='Title'
+                    value={post.title}
+                    name='title'
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <textarea
+                    type='text'
+                    className='m-4 p-2 rounded-4'
+                    placeholder='Description'
+                    value={post.desc}
+                    name='desc'
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <input
+                    type='text'
+                    className='m-4 p-2 rounded-4'
+                    placeholder='Category'
+                    value={post.cat}
+                    name='cat'
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className='text-center m-4'>
+                  <button className='btn btn-primary' onClick={handleSubmit}>
+                    Update Post
+                  </button>
+                </div>
+              </form>
             </div>
-            <div>
-              <textarea
-                type='text'
-                className='m-4 p-2 rounded-4'
-                placeholder='Description'
-                value={post.desc}
-                name='desc'
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <input
-                type='text'
-                className='m-4 p-2 rounded-4'
-                placeholder='Category'
-                value={post.cat}
-                name='cat'
-                onChange={handleChange}
-              />
-            </div>
-            <div className='text-center m-4'>
-              <button className='btn btn-primary' onClick={handleSubmit}>
-                Update Post
-              </button>
-            </div>
-          </form>
-        </div>
-      ) : (
-        <>
-          <div className='auth display-6'>Not logged In!</div>
-        </>
-      )}
-    </>
-  );
+          </>
+        ) : (
+          <>
+            <div className='auth display-6'>You cannot edit this post!</div>
+          </>
+        )}
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className='auth display-6'>Not Logged in!</div>
+      </>
+    );
+  }
 };
 
 export default Edit;
