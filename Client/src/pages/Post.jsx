@@ -4,10 +4,11 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 import config from '../config.json';
+import Comments from '../components/Comments';
 
 const Post = () => {
   const [post, setPost] = useState([]);
-  const { currentUser, logout } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   let username = '';
   const navigate = useNavigate();
 
@@ -24,7 +25,6 @@ const Post = () => {
   const getPost = async () => {
     try {
       let data = await axios.get(`${config.SERVER_URL}/api/posts/${id}`);
-      console.log(data.data[0]);
       setPost(data.data[0]);
     } catch (err) {
       console.log(err);
@@ -43,6 +43,14 @@ const Post = () => {
       console.log(err);
     }
   };
+
+  // const addComment = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <>
@@ -99,13 +107,9 @@ const Post = () => {
             <p className='p-4'>{post.desc}</p>
           </div>
         </div>
-        <div className='m-5'>
-          Written by
-          <Link to={`/user/${post.uid}`} className='px-2'>
-            {post.username}
-          </Link>
-        </div>
       </div>
+      <div className='text-center my-5'>Posted by {post.username}</div>
+      <Comments />
     </>
   );
 };

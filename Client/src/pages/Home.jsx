@@ -34,12 +34,7 @@ const Home = () => {
           <div className='card-body'>
             <h5 className='card-title text-center m-4'>{each.title}</h5>
             <div className='text-center m-4'>
-              <div className='mb-5 text-center'>
-                Posted by
-                <Link to={`/user/${each.uid}`} className='px-2'>
-                  {each.username}
-                </Link>
-              </div>
+              <div className='mb-5 text-center'>Posted by {each.username}</div>
               <Link to={`/post/${each.id}`}>
                 <button className='btn btn-primary'>Read</button>
               </Link>

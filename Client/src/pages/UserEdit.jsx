@@ -46,7 +46,7 @@ const UserEdit = () => {
 
   return (
     <>
-      {currentUser?.username == post.username ? (
+      {currentUser?.id == post.id ? (
         <div className='auth text-center'>
           <div className='display-6 m-4'>Update User Details</div>
           <form>
